@@ -40,8 +40,9 @@ assert_eq!(doc.text(hits[0]), "one");
 - **A tree you can edit**: create, insert, move and remove nodes, set and
   rename attributes, then serialize as `innerHTML`, `outerHTML` or text.
 - **Limits you choose**: a time budget per parse and a cap on input size.
-  Inputs built to be slow, like thousands of nested formatting elements,
-  take time in proportion to their length.
+  The slow-input cases in `examples/hostile.rs`, like thousands of nested
+  formatting elements (the pattern that runs Lexbor out of memory), take
+  time in proportion to their length.
 - **One dependency** (`memchr`) and one `unsafe` block, with its reasoning
   written beside it.
 
@@ -66,7 +67,7 @@ every module Lexbor has, and then go past it:
 | Chunked input | yes | planned |
 | Parse errors with line and column | pointers only | planned |
 | Source positions on nodes and attributes | no | planned |
-| Linear worst case | no ([#340](https://github.com/lexbor/lexbor/issues/340)) | yes |
+| Linear worst case | no ([#340](https://github.com/lexbor/lexbor/issues/340)) | planned |
 | Thread-safe documents | no | planned, checked at compile time |
 | `:scope`, `:lang()`, `:dir()`, `:valid` and other static pseudo-classes | parsed, never match | `:scope` yes, the rest planned |
 | XPath | no | planned |
