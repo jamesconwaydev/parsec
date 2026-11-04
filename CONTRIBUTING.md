@@ -107,6 +107,31 @@ The body, wrapped at 72 columns, says what was wrong and what changed.
 Keep a pull request to one change. The template will ask what it fixes and
 how you tested it.
 
+## How review works
+
+Every pull request is read in full before it merges, including the
+maintainer's own; once Parsec has two maintainers, it needs an approving
+review from the one who didn't write it ([GOVERNANCE.md](GOVERNANCE.md)).
+A reviewer checks, in this order:
+
+1. **It's right.** It does what the HTML Standard (or the spec in question)
+   says, and a test shows it: one that fails without the change.
+2. **It's safe.** No new `unsafe`, no recursion whose depth a page
+   controls, and nothing whose time grows faster than the input. Anything
+   that could crash or stall on hostile input is a security question (see
+   [SECURITY.md](SECURITY.md)).
+3. **It's not slower.** Parser changes come with before-and-after numbers
+   on the benchmark corpus; a slowdown has to be worth what it buys, and
+   the pull request says so.
+4. **It's documented.** The wiki page for anything users can see is
+   updated in the same change, and the README if a claim there changes.
+5. **It's tidy.** CI is green: formatting, clippy, cargo-deny, the drift
+   check and the tests on Linux, macOS and Windows.
+
+A pull request merges once all of that holds and every review thread is
+resolved. If a contributor and reviewer disagree, the reasoning goes in the
+thread and the maintainer decides, as GOVERNANCE.md describes.
+
 ## The contributor licence agreement
 
 Parsec is Apache-2.0. Its parser is shared with Netweir, which is AGPL-3.0
