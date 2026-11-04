@@ -2,6 +2,12 @@
   <img src="assets/parsec-header.svg" alt="Parsec" width="100%">
 </h1>
 
+<p align="center">
+  <a href="https://www.bestpractices.dev/projects/16340"><img src="https://www.bestpractices.dev/projects/16340/badge" alt="OpenSSF Best Practices"></a>
+  <a href="https://scorecard.dev/viewer/?uri=github.com/parsec-html/parsec"><img src="https://api.scorecard.dev/projects/github.com/parsec-html/parsec/badge" alt="OpenSSF Scorecard"></a>
+  <a href="https://github.com/parsec-html/parsec/actions/workflows/ci.yml"><img src="https://github.com/parsec-html/parsec/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+</p>
+
 An HTML parser in Rust that reads pages the way a browser does, finds what
 you're after with CSS selectors, and lets you change the tree and write it
 back out.
