@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Parsec</title>
+  <rect width="512" height="512" fill="#0b0d17"/>
+  <g fill="#f4f4f6">
+    <circle cx="96" cy="118" r="4"/><circle cx="420" cy="92" r="3"/><circle cx="440" cy="300" r="4"/>
+    <circle cx="140" cy="420" r="3"/><circle cx="380" cy="440" r="2.5"/><circle cx="70" cy="300" r="2.5"/>
+  </g>
+  <g fill="#0b0d17" stroke="#f4f4f6" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="translate(262 242) rotate(45) scale(1.45)">
+      <path d="M-21 76 Q-36 124 -15 172 Q-3 128 -4 76 Z"/>
+      <path d="M4 76 Q3 128 15 172 Q36 124 21 76 Z"/>
+      <path d="M-40 6 L-74 46 Q-78 66 -62 70 L-30 50 Z"/>
+      <path d="M40 6 L74 46 Q78 66 62 70 L30 50 Z"/>
+      <path d="M0 -116 C34 -100 50 -54 46 -12 L32 62 L-32 62 L-46 -12 C-50 -54 -34 -100 0 -116 Z"/>
+      <rect x="-24" y="62" width="48" height="14" rx="3"/>
+      <circle cx="0" cy="-42" r="17" fill="none"/>
+    </g>
+  </g>
+</svg>
