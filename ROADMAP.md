@@ -10,6 +10,21 @@ Here's the order we're working in. Each milestone has an issue list on
 GitHub, and nothing moves from "planned" to "done" in the README until it
 ships with its tests.
 
+## When
+
+Targets, not promises: a milestone ships when it's done and tested, and
+the order can change when users show us something more urgent.
+
+| Milestone | Target |
+|---|---|
+| M1. Proof | November 2026 |
+| M2. HTML, past Lexbor | early 2027 |
+| M3. Selectors | early 2027, alongside M2 |
+| M4. Every way in, then 0.1.0 | spring 2027 |
+| M5. Encoding and M6. URL | summer 2027 |
+| M8. XPath | summer 2027 |
+| M7. CSS | late 2027 into 2028, in parts |
+
 ## M0. Foundations
 
 The repository, CI on Linux, macOS and Windows, the shared parser core and
@@ -83,3 +98,24 @@ XPath 1.0 over Parsec's tree, shared with Netweir.
 The first release goes to crates.io, PyPI and npm as `parsec-html` once
 M1 to M4 are done and the benchmarks show Parsec ahead on every page in the
 corpus.
+
+## Not planned
+
+Some things we've decided not to do, so nobody waits for them:
+
+- **Running JavaScript.** Parsec builds the tree the HTML Standard
+  describes for a page without scripts running. Pages that need scripts
+  need a browser; Netweir drives one.
+- **Layout and rendering.** No boxes, fonts or painting. Computed CSS
+  values (M7) stop short of layout.
+- **A "relaxed" mode that breaks the spec.** Parsec parses the way
+  browsers do. If you need a different tree, the tokenizer's `Sink` lets
+  you build your own.
+- **Lexbor's `lxb_*` symbols.** The C API (M4) is Parsec's own. Copying
+  Lexbor's would also copy its node lifetimes, which are where its
+  use-after-free bugs come from. The migration guide maps one to the
+  other instead.
+- **Fetching.** Parsec parses what you give it. Downloading pages is
+  someone else's job (Netweir's, for one).
+- **DOM events and mutation observers.** Nothing runs in response to a
+  change, because nothing runs at all.
