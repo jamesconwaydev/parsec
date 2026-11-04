@@ -67,8 +67,16 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      # A pull request can change NETWEIR_COMMIT, so only a full commit
+      # hash is used: never a branch, tag or anything else git would read.
       - id: pin
-        run: echo "commit=$(cat NETWEIR_COMMIT)" >> "$GITHUB_OUTPUT"
+        run: |
+          commit=$(tr -d '[:space:]' < NETWEIR_COMMIT)
+          if ! printf '%s' "$commit" | grep -Eqx '[0-9a-f]{40}'; then
+            echo "NETWEIR_COMMIT must hold a full 40-character commit hash, not '$commit'" >&2
+            exit 1
+          fi
+          echo "commit=$commit" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: netweir/netweir
