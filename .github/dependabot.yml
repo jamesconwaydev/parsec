@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      cargo:
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+  # html5lib-tests. The tree-construction tests are pinned files, not a
+  # submodule, and move with crates/parsec/scripts/fetch-tree-tests.sh.
+  - package-ecosystem: gitsubmodule
+    directory: /
+    schedule:
+      interval: weekly

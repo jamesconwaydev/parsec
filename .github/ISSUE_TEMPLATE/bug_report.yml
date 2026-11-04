@@ -1,0 +1,58 @@
+name: Something's broken
+description: Parsec crashed, built the wrong tree, matched the wrong elements, or didn't do what the wiki says.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting it. The smaller the HTML that shows it, the
+        sooner it gets fixed. If it crashes or hangs on crafted input,
+        please report it privately instead (see SECURITY.md).
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: And what you expected instead. If a browser builds a different tree, what it builds.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to see it happen
+      description: |
+        The shortest code and HTML that show the problem. If it needs a
+        particular page, save it and attach it.
+      render: rust
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Error or output
+      description: The panic message, backtrace or output, if there is one.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: Parsec version or commit
+      description: There's no release yet, so the commit you built from.
+    validations:
+      required: true
+  - type: input
+    id: rust
+    attributes:
+      label: Rust version
+      description: "`rustc --version`"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - macOS
+        - Linux
+        - Windows
+        - Other
+    validations:
+      required: true

@@ -1,0 +1,22 @@
+[package]
+name = "parsec-html"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+description = "A fast HTML parser that follows the WHATWG spec, with CSS selectors and a mutable DOM."
+repository.workspace = true
+license.workspace = true
+readme = "../../README.md"
+keywords = ["html", "parser", "html5", "dom", "css-selectors"]
+categories = ["parser-implementations", "web-programming"]
+# Until it's ahead of Lexbor on every benchmark and conformance suite.
+publish = false
+
+[lib]
+name = "parsec"
+
+[dependencies]
+memchr = "2"
+
+[dev-dependencies]
+serde_json = "1"
