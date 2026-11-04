@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="1200" height="360" role="img" aria-labelledby="title desc">
+  <title id="title">Parsec</title>
+  <desc id="desc">A line-drawn rocket flies through a field of stars, leaving HTML tags in its exhaust, beside the word Parsec.</desc>
+  <style>
+    .line { fill: none; stroke: #f4f4f6; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+    .hull { fill: #0b0d17; stroke: #f4f4f6; stroke-width: 5; stroke-linejoin: round; }
+    .star { fill: #f4f4f6; }
+    .tag { fill: #9aa3ff; font: 600 20px ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .title { fill: #f4f4f6; font: 800 104px "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif; letter-spacing: -2px; }
+    .sub { fill: #a7abc2; font: 400 27px "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    .chip { fill: #1a1e33; stroke: #3a3f66; stroke-width: 1.5; }
+    .chiptext { fill: #c9ccff; font: 600 18px ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+
+    /* The rocket drifts as if riding turbulence. */
+    .ship { animation: bob 3.2s ease-in-out infinite; }
+    @keyframes bob {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(6px, -8px); }
+    }
+
+    /* Flames flicker from the nozzle. */
+    .flame { transform-box: fill-box; transform-origin: 50% 0%; animation: flicker 0.18s ease-in-out infinite alternate; }
+    .flame.b { animation-duration: 0.23s; animation-delay: -0.1s; }
+    @keyframes flicker {
+      from { transform: scaleY(0.78) scaleX(0.94); }
+      to { transform: scaleY(1.12) scaleX(1.04); }
+    }
+
+    /* Stars stream past, opposite the way the rocket points. */
+    .drift { animation: drift linear infinite; }
+    @keyframes drift {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      12% { opacity: 1; }
+      88% { opacity: 1; }
+      100% { transform: translate(-420px, 420px); opacity: 0; }
+    }
+
+    /* Parsed tags tumble out of the exhaust. */
+    .spill { animation: spill 2.6s ease-in infinite; opacity: 0; }
+    @keyframes spill {
+      0% { transform: translate(0px, 0px) rotate(0deg); opacity: 0; }
+      15% { opacity: 1; }
+      100% { transform: translate(-170px, 150px) rotate(-40deg); opacity: 0; }
+    }
+
+    /* A planet, slowly turning its ring. */
+    .planet { animation: float 7s ease-in-out infinite; }
+    @keyframes float {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(-4px, 5px); }
+    }
+
+    .twinkle { animation: twinkle 2.4s ease-in-out infinite; }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ship, .flame, .drift, .spill, .twinkle, .planet { animation: none; }
+      .spill { opacity: 0.8; }
+    }
+  </style>
+
+  <rect width="1200" height="360" rx="22" fill="#0b0d17"/>
+
+  <!-- Distant stars that only twinkle. -->
+  <g class="star">
+    <circle class="twinkle" cx="470" cy="40" r="1.6"/>
+    <circle class="twinkle" cx="640" cy="310" r="1.4" style="animation-delay:-0.8s"/>
+    <circle class="twinkle" cx="1090" cy="60" r="1.8" style="animation-delay:-1.5s"/>
+    <circle class="twinkle" cx="1150" cy="290" r="1.3" style="animation-delay:-0.3s"/>
+    <circle class="twinkle" cx="880" cy="330" r="1.5" style="animation-delay:-1.9s"/>
+    <circle class="twinkle" cx="980" cy="24" r="1.2" style="animation-delay:-1.1s"/>
+  </g>
+
+  <!-- A ringed planet, far off. -->
+  <g class="planet">
+    <g transform="translate(1092 112) rotate(-18)">
+      <circle class="hull" cx="0" cy="0" r="26" style="stroke-width:3.5"/>
+      <path class="line" d="M-30 6 C-60 16 -40 30 0 22 C40 14 62 -4 32 -8" style="stroke-width:3.5"/>
+    </g>
+  </g>
+
+  <!-- Near stars, streaming. -->
+  <g class="star">
+    <circle class="drift" cx="420" cy="-20" r="2.2" style="animation-duration:3.1s"/>
+    <circle class="drift" cx="300" cy="-40" r="1.6" style="animation-duration:2.4s;animation-delay:-1.2s"/>
+    <circle class="drift" cx="520" cy="60" r="1.8" style="animation-duration:3.6s;animation-delay:-2.1s"/>
+    <circle class="drift" cx="200" cy="10" r="2.6" style="animation-duration:2.1s;animation-delay:-0.4s"/>
+    <circle class="drift" cx="460" cy="140" r="1.4" style="animation-duration:2.8s;animation-delay:-1.7s"/>
+    <circle class="drift" cx="380" cy="80" r="1.9" style="animation-duration:3.3s;animation-delay:-2.7s"/>
+    <circle class="drift" cx="140" cy="-60" r="1.5" style="animation-duration:2.6s;animation-delay:-0.9s"/>
+    <circle class="drift" cx="560" cy="-10" r="2" style="animation-duration:3.9s;animation-delay:-3.1s"/>
+  </g>
+
+  <!-- Speed lines. -->
+  <g stroke="#f4f4f6" stroke-width="2" stroke-linecap="round" opacity="0.35">
+    <line class="drift" x1="330" y1="20" x2="300" y2="50" style="animation-duration:1.4s"/>
+    <line class="drift" x1="470" y1="30" x2="440" y2="60" style="animation-duration:1.7s;animation-delay:-0.6s"/>
+    <line class="drift" x1="400" y1="-30" x2="370" y2="0" style="animation-duration:1.2s;animation-delay:-0.9s"/>
+  </g>
+
+  <!-- Tags spilling from the exhaust, near the rocket's tail. -->
+  <g transform="translate(178 292)">
+    <text class="tag spill" x="0" y="0">&lt;div&gt;</text>
+    <text class="tag spill" x="10" y="-6" style="animation-delay:-0.65s">&lt;/p&gt;</text>
+    <text class="tag spill" x="-6" y="8" style="animation-delay:-1.3s">&lt;a&gt;</text>
+    <text class="tag spill" x="4" y="2" style="animation-delay:-1.95s">&lt;li&gt;</text>
+  </g>
+
+  <!-- The rocket, pointing up and to the right. -->
+  <g class="ship">
+    <g transform="translate(300 168) rotate(45) scale(0.85)">
+      <path class="hull flame" d="M-21 76 Q-36 124 -15 172 Q-3 128 -4 76 Z"/>
+      <path class="hull flame b" d="M4 76 Q3 128 15 172 Q36 124 21 76 Z"/>
+      <path class="hull" d="M-40 6 L-74 46 Q-78 66 -62 70 L-30 50 Z"/>
+      <path class="hull" d="M40 6 L74 46 Q78 66 62 70 L30 50 Z"/>
+      <path class="hull" d="M0 -116 C34 -100 50 -54 46 -12 L32 62 L-32 62 L-46 -12 C-50 -54 -34 -100 0 -116 Z"/>
+      <rect class="hull" x="-24" y="62" width="48" height="14" rx="3"/>
+      <circle class="line" cx="0" cy="-42" r="17"/>
+    </g>
+  </g>
+
+  <text class="title" x="520" y="168">Parsec</text>
+  <text class="sub" x="524" y="216">An HTML parser in Rust, built for speed.</text>
+  <g transform="translate(524 244)">
+    <rect class="chip" width="130" height="36" rx="18"/>
+    <text class="chiptext" x="65" y="24" text-anchor="middle">&lt;/&gt; HTML</text>
+    <rect class="chip" x="142" width="186" height="36" rx="18"/>
+    <text class="chiptext" x="235" y="24" text-anchor="middle">:has(selectors)</text>
+    <rect class="chip" x="340" width="96" height="36" rx="18"/>
+    <text class="chiptext" x="388" y="24" text-anchor="middle">Rust</text>
+  </g>
+</svg>

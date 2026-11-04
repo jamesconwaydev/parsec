@@ -1,0 +1,22 @@
+Parsec
+Copyright 2026 James Conway
+
+Parsec is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Parsec's HTML parser includes the table of named character references
+from the HTML Standard (https://html.spec.whatwg.org/), © WHATWG (Apple,
+Google, Mozilla, Microsoft), licensed under the Creative Commons
+Attribution 4.0 International License.
+
+Parsec's tests use test data that is not part of the library and is
+licensed under its own terms:
+
+- html5lib-tests (https://github.com/html5lib/html5lib-tests), in
+  crates/parsec/tests/html5lib-tests, Copyright (c) 2006-2013 James
+  Graham, Geoffrey Sneddon, and other contributors, under the MIT
+  License; see the LICENSE file in that directory.
+- The tree-construction tests from web-platform-tests
+  (https://github.com/web-platform-tests/wpt), in
+  crates/parsec/tests/tree-construction, Copyright web-platform-tests
+  contributors, under the 3-Clause BSD License; see the LICENSE.md file
+  in that directory.

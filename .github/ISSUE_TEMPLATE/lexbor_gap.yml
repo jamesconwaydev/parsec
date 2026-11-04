@@ -1,0 +1,46 @@
+name: Something Lexbor does that Parsec doesn't
+description: You use Lexbor, and something you rely on is missing from Parsec, or works differently.
+labels: [lexbor-gap]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Parsec is meant to be somewhere Lexbor's users can move to without
+        losing anything. If something stands in your way, this is where it
+        goes.
+  - type: textarea
+    id: lexbor
+    attributes:
+      label: What you do with Lexbor
+      description: The function or module you use, and what it does for you.
+      render: c
+    validations:
+      required: true
+  - type: textarea
+    id: parsec
+    attributes:
+      label: What happens in Parsec
+      description: Whether it's missing altogether, or there but different. If you tried it, the code and what you got.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Parsing
+        - DOM
+        - CSS selectors
+        - Serialisation
+        - Encoding
+        - URLs
+        - CSS parsing
+        - Speed or memory
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: lexbor-version
+    attributes:
+      label: Lexbor version
+      placeholder: "2.4.0"

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question
+    url: https://github.com/parsec-html/parsec/discussions
+    about: How do I, why does it, is it possible to. Discussions is the place.
+  - name: Read the docs
+    url: https://github.com/parsec-html/parsec/wiki
+    about: How to use Parsec, in the wiki.
+  - name: Report a security problem
+    url: https://github.com/parsec-html/parsec/security/advisories/new
+    about: Privately, please. Don't open a public issue.
