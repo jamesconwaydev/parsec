@@ -85,19 +85,19 @@ Parsec isn't on crates.io yet. To try it from git:
 
 ```toml
 [dependencies]
-parsec-html = { git = "https://github.com/jamesconwaydev/parsec" }
+parsec-html = { git = "https://github.com/parsec-html/parsec" }
 ```
 
 The package is `parsec-html` and the crate you `use` is `parsec`.
 
-The [wiki](https://github.com/jamesconwaydev/parsec/wiki) is where the
+The [wiki](https://github.com/parsec-html/parsec/wiki) is where the
 documentation lives: how parsing works, every option, the selector list,
 and a guide for moving from Lexbor.
 
 ## Working on it
 
 ```sh
-git clone --recurse-submodules https://github.com/jamesconwaydev/parsec
+git clone --recurse-submodules https://github.com/parsec-html/parsec
 cd parsec
 cargo test
 ```
@@ -105,8 +105,8 @@ cargo test
 The parser core is shared with Netweir, so changes to `crates/parsec` start
 there. [CONTRIBUTING.md](CONTRIBUTING.md) explains how that works and how
 to get a change in. Questions go to
-[Discussions](https://github.com/jamesconwaydev/parsec/discussions), bugs to
-[Issues](https://github.com/jamesconwaydev/parsec/issues).
+[Discussions](https://github.com/parsec-html/parsec/discussions), bugs to
+[Issues](https://github.com/parsec-html/parsec/issues).
 
 ## Licence
 

@@ -9,7 +9,7 @@ with an issue.
 
 Open an issue first for anything bigger than a small fix, so we can agree
 on the shape before you spend an evening on it. For questions, use
-[Discussions](https://github.com/jamesconwaydev/parsec/discussions) rather
+[Discussions](https://github.com/parsec-html/parsec/discussions) rather
 than an issue.
 
 If an issue is labelled `good first issue`, it's small, self-contained and
@@ -48,7 +48,7 @@ Parsec's own, and you change it here directly.
 You need Rust 1.88 or newer. That's all.
 
 ```
-git clone --recurse-submodules https://github.com/jamesconwaydev/parsec
+git clone --recurse-submodules https://github.com/parsec-html/parsec
 cd parsec
 cargo test
 ```
@@ -88,7 +88,7 @@ cargo +nightly fuzz run parse
 
 A bug fix comes with the test that would have caught it. A new feature
 comes with tests, and a page in the
-[wiki](https://github.com/jamesconwaydev/parsec/wiki) if you'd use it from
+[wiki](https://github.com/parsec-html/parsec/wiki) if you'd use it from
 your own code.
 
 ## Commits and pull requests
@@ -123,7 +123,7 @@ You only do this once.
 
 ## Where the docs live
 
-In the [wiki](https://github.com/jamesconwaydev/parsec/wiki). There's no
+In the [wiki](https://github.com/parsec-html/parsec/wiki). There's no
 separate website. Anyone with a GitHub account can suggest a fix there;
 for anything bigger, open an issue first.
 

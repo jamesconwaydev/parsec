@@ -5,7 +5,7 @@
 Please don't open a public issue. Report it privately instead: on the
 repository's "Security" tab, choose "Report a vulnerability", or go
 straight to
-[the form](https://github.com/jamesconwaydev/parsec/security/advisories/new).
+[the form](https://github.com/parsec-html/parsec/security/advisories/new).
 Tell me what you found, how to reproduce it, and what an attacker could do
 with it. The input that triggers it is the most useful thing you can send.
 

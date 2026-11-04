@@ -30,12 +30,11 @@ about the project.
 
 If something here happens to you, or you see it happen, report it through
 GitHub. On the issue, pull request, discussion or comment, open the
-"..." menu and choose "Report content". Where GitHub offers
-"Report to repository admins", that sends it privately to the
-maintainer, James Conway
-([@jamesconwaydev](https://github.com/jamesconwaydev)); otherwise it goes
-to GitHub Support. For someone's behaviour as a whole, use "Block or
-Report" on their profile.
+"..." menu, choose "Report content", then "Report to repository
+admins". That sends it privately to the maintainer, James Conway
+([@jamesconwaydev](https://github.com/jamesconwaydev)), and nobody else
+sees it. For someone's behaviour as a whole, use "Block or Report" on
+their profile.
 
 Reports that reach the maintainer are kept confidential and answered
 within a week. Parsec has one maintainer for now, so if your report is
