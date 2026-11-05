@@ -1,0 +1,65 @@
+name: coverage
+
+# How much of the code the tests run, for the OpenSSF Best Practices
+# criteria: statements (lines and regions), functions and branches.
+# Branch coverage needs nightly, so the whole run uses it. On each push to
+# main, and on a pull request that changes this file, so a change to it
+# is tried before it lands. It fails under the gold thresholds.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths: [.github/workflows/coverage.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: true
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8 # master
+        with:
+          toolchain: nightly
+          components: llvm-tools-preview
+      - uses: taiki-e/install-action@1919c4a95903d2c33e4a221102edca87309fc14b # v2.89.0
+        with:
+          tool: cargo-llvm-cov
+      - name: Run the tests on an instrumented build
+        run: |
+          cargo llvm-cov --workspace --branch --no-report
+          cargo llvm-cov report --branch --summary-only | tee coverage.txt
+          cargo llvm-cov report --branch --lcov --output-path coverage.lcov
+      # Gold asks for 90% of statements and 80% of branches. cargo llvm-cov
+      # can fail on lines itself; branches are the last column of TOTAL.
+      - name: Check the gold thresholds
+        run: |
+          cargo llvm-cov report --branch --summary-only --fail-under-lines 90 > /dev/null
+          branches=$(awk '$1 == "TOTAL" { sub("%", "", $NF); print $NF }' coverage.txt)
+          echo "Branch coverage: $branches%"
+          awk -v b="$branches" 'BEGIN { exit !(b >= 80) }' || { echo "Branch coverage is under 80%." >&2; exit 1; }
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "## Coverage"
+            echo '```'
+            cat coverage.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: coverage
+          path: |
+            coverage.txt
+            coverage.lcov
