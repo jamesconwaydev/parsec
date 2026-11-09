@@ -8,6 +8,7 @@ pub mod css;
 mod dom;
 mod edit;
 mod entities;
+mod pattern;
 mod serialize;
 mod tags;
 pub mod tokenizer;
@@ -15,7 +16,16 @@ mod tree;
 
 pub use dom::{AttrNs, Document, Kind, MAX_INPUT, NodeId, Ns, Quirks};
 pub use edit::EditError;
-pub use tree::{Options, ParseError, parse, parse_fragment, parse_with};
+pub use tree::{Options, ParseError, parse, parse_fragment, parse_fragment_with, parse_with};
+
+// A parsed document and a parsed selector can be read from many threads at
+// once (writing takes `&mut`, so one at a time). This fails the build if a
+// change ever makes either of them not Send or not Sync.
+const _: () = {
+    const fn shareable<T: Send + Sync>() {}
+    shareable::<Document>();
+    shareable::<css::SelectorList>();
+};
 
 /// The character(s) HTML's named reference `name` stands for, without the
 /// `&` and with or without the `;` as the table has it: `nbsp;` gives
